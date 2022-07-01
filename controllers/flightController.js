@@ -14,6 +14,13 @@ const allFlights = (req, res) => {
   res.send(flightsModel);
 };
 
+const getFlight = (req, res) => {
+  const id = +req.params.id;
+  const flight =
+    id in flightsModel ? flightsModel[id] : "Flight does not exist";
+  res.send(flight);
+};
+
 const deleteFlight = (req, res) => {};
 
-module.exports = { example, addFlight, deleteFlight,allFlights };
+module.exports = { example, addFlight, deleteFlight, allFlights, getFlight };
