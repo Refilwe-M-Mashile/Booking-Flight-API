@@ -1,4 +1,4 @@
-const { flightsModel } = require("../models/Flight");
+let { flightsModel } = require("../models/Flight");
 
 const example = (req, res) => {
   console.log("example");
@@ -29,7 +29,15 @@ const editFlight = (req, res) => {
   res.send("Flight Updated");
 };
 
-const deleteFlight = (req, res) => {};
+const deleteFlight = (req, res) => {
+  const id = +req.params.id;
+  let output = "";
+  if (id in flightsModel) {
+    flightsModel = flightsModel.splice(id, 1);
+    output = `Flight ${id} deleted successfully`;
+  } else output = "Flight does not exist";
+  res.send(output);
+};
 
 module.exports = {
   example,
