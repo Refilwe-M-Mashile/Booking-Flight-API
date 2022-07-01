@@ -1,19 +1,19 @@
-const {flightsModel}  = require("../models/Flight");
+const { flightsModel } = require("../models/Flight");
 const example = (req, res) => {
-    console.log("example")
-    res.send("Flight example")
-}
+  console.log("example");
+  res.send("Flight example");
+};
 
-const addFlight = (req,res)=>{
-   const {flight} = req.body;
-   flightsModel.push(flight);
-   res.send("Added Flight")
-}
+const addFlight = (req, res) => {
+  const { flight } = req.body;
+  flightsModel.push(flight);
+  res.send("Added Flight");
+};
 
-const deleteFlight = (req,res)=>{
+const allFlights = (req, res) => {
+  res.send(flightsModel);
+};
 
-}
+const deleteFlight = (req, res) => {};
 
-
-module.exports = {example, addFlight, deleteFlight}
-
+module.exports = { example, addFlight, deleteFlight,allFlights };
